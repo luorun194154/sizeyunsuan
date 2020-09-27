@@ -1,0 +1,161 @@
+
+def  kuohao（fuhao，n）：                                           ＃如果temp为1.则生成括号，反之，则不
+    我= 0
+    f = []
+    而（i < len（fuhao））：
+        如果（我 =！ 0  和（˚F [ len个（˚F）- 1 ] =！ '）'  和 ˚F [ len个（˚F）- 1 ] ！=  '（'）和（富豪 [ 我 ] ==  '+'  或 fuhao [ i ] ==  '-'））：
+            临时 =  随机。randint（0，1）;
+            如果（temp  ==  1）：
+                f。追加（'（'）
+                f。附加（fuhao [ i ]）
+                f。追加（'）'）
+                我= 我+ 1
+                继续
+        f。附加（fuhao [ i ]）
+        我 =  我+ 1
+    返回 f
+def  lianjie（fuhao，shuzi，n）：                                         ＃将数字和符号连成翻译
+    ti = “”
+    j = 0
+    对于 我 在 范围（ñ - 1）：
+        如果（fuhao [ i + j ] ==  '（'）：
+            ti = ti + fuhao [ i + j ]
+            j  =  j + 1
+        ti = ti + str（shuzi [ i ]）+ fuhao [ i + j ]
+        如果（fuhao [ i + j ] == '）'）：
+            j  =  j + 1
+            ti = ti + fuhao [ i + j ]
+    ti = ti + str（shuzi [ i + 1 ]）
+    如果（富豪 [ LEN（富豪）- 1 ] == '）'）：
+        ti  =  ti  +  '）'
+    ti  =  ti  +  '='
+    返回 ti
+def  timu（nianji，n）：                                                   ＃生成译文，返回译文和答案
+    if（nianji <= 2）：                                                    ＃2年级以下只用做10以内的加减法
+        shuzi = [ 随机。randint（1，10）用于 我 在 范围（Ñ）]
+        fuhao = [ 随机。选择（[ '+' ，' - ' ]）对 我 在 范围（ñ - 1）]
+    elif（nianji <= 4）：
+        shuzi = [ 随机。randint（1，10）用于 我 在 范围（Ñ）]                ＃4，3年级需要会10以内的四则运算
+        fuhao = [ 随机。选择（[ '+' ，' - '，'*' ，'/' ]）对 我 在 范围（ñ - 1）]
+    其他：
+        shuzi = [ 随机。randint（1，100）用于 我 在 范围（Ñ）]                ＃5,6年级的题目为100以内的四则运算
+        fuhao = [ 随机。选择（[ '+' ，' - '，'*' ，'/' ]）对 我 在 范围（ñ - 1）]
+    对于 我 在 范围（ñ - 1）：
+        if（fuhao [ i ] == '/'）：                                            ＃分数全为真分数
+            而（shuzi [ i ] > = shuzi [ i + 1 ]）：
+                shuzi [ i ] = 随机。randint（1，shuzi [ i + 1 ]）
+    如果（年鉴> 2）：
+        fuhao  =  郭浩（fuhao，n）
+    ti = lianjie（fuhao，shuzi，n）
+    大安 =  jisuan（树姿，富豪，Ñ）
+    回到 大安，TI
+def  jisuan（shuzi，fuhao，n）：                                             ＃译文计算的结果
+    我= 0
+    k = 0
+    而（i < n - 1）：
+        如果（fuhao [ i + k ] == '（'）：
+            如果（fuhao [ i + k + 1 ] == '+'）：
+                shuzi [ i ] =  shuzi [ i ] + shuzi [ i + 1 ]
+            其他：
+                树姿 [ 我 ] =  树姿 [ 我 ] - 树姿 [ 我+ 1 ]
+                如果（shuzi [ i ] <= 0）：
+                    返回 - 1
+            shuzi [ i + 1 ] = shuzi [ i ]
+            k = k + 2
+        elif（fuhao [ i + k ] == '*'  或 fuhao [ i + k ] == '/'）：
+            j = 我
+            temp = shuzi [ i ]
+            而（j < n - 1  和（fuhao [ j + k ] == '*'  或 fuhao [ j + k ] == '/'）））：
+                如果（（j + k + 1）< len（fuhao）和 fuhao [ j + k + 1 ] == '（'）：
+                    如果（fuhao [ j + k + 2 ] == '+'）：
+                        树姿 [ Ĵ + 1 ] =  树姿 [ Ĵ + 2 ] + 树姿 [ Ĵ + 1 ]
+                    其他：
+                        树姿 [ Ĵ + 1 ] =  树姿 [ Ĵ + 1 ] - 树姿 [ Ĵ + 2 ]
+                        如果（shuzi [ j + 1 ] <= 0）：
+                            返回 - 1
+                如果（fuhao [ j + k ] == '*'）：
+                    temp = temp * shuzi [ j + 1 ]
+                elif（fuhao [ j + k ] == '/'）：
+                    temp = temp / shuzi [ j + 1 ]
+                j = j + 1
+                如果（（j + k）< len（fuhao）和 fuhao [ j + k ] == '（'）：
+                    k = k + 2
+                    j = j + 1
+            shuzi [ i ] = temp ;
+            i = j
+        我= 我+ 1
+    k = 0
+    daan = shuzi [ 0 ]
+    对于 我 在 范围（ñ - 1）：
+        如果（fuhao [ i + k ] == '+'）：
+            大安= 达安+ 树姿 [ 我+ 1 ]
+        elif（fuhao [ i + k ] == '-'）：
+            daan = daan - shuzi [ i + 1 ]
+        elif（fuhao [ i + k ] == '（'）：
+            k = k + 2
+    返回 大安
+def  jieguozhuanhuan（jieguo）：                                               ＃将输入的答案转化为数字
+    温度 =  0
+    sum1  =  0
+    sum2  =  0
+    jieguo  =  jieguo  + '/'
+    为 我 在 jieguo：
+        如果（i  ！=  '/'）：
+            温度 =  温度* 10 + 整数（i）
+        elif（sum1 == 0）：
+            sum1 = 温度/ 10
+            温度 =  0
+        其他：
+            sum2  =  温度/ 10
+            温度 =  0
+    如果（sum2  ！=  0）：
+        综上所述 =  SUM1 / SUM2
+        如果（gongyinshu == - 1）：
+            返回 - 1
+    其他：
+        总和 =  sum1
+    返回 小数（'{}'。格式（sum））。limit_denominator（）
+
+def  gongyinshu（sum1，sum2）：                                    ＃判断输入的数是否为约分后的数，如果还可以约分，则为错误
+    如果（sum1 > sum2）：
+        a = sum1
+        b = 总和2
+    其他：
+        a = sum2
+        b = 总和1
+    而（a ％b ！= 0）：
+        t = b
+        b = a ％b
+        a = t
+    如果（b == 1）：
+        返回 1
+    其他：
+        返回 - 1
+def  main（）：
+    nianji = int（输入（“您所在的年级是：（n> = 1和n <= 6）”））
+    tishu = 10                                                                 ＃一共十道题
+    奋树= 0
+    shurucishu = 1
+    while（shurucishu <= 3  and  nianji < 1  或 nianji > 6）：                                        ＃小学生是1〜6年级
+        nianji = int（输入（“您是小学生，请注意，如果输入错误年级次数大于三次你的成绩将为0，你所在的年级是：（n> = 1和n <= 6）“））
+        shurucishu  =  shurucishu + 1
+    对于 我 在 范围（1，tishu + 1）：
+        如果（shurucishu > 3）：
+            打破
+        if  nianji > 3：                                                         ＃三年级以下转化长度长度
+            n = 随机。randint（3，10）
+        其他：
+            n = 随机。randint（2，4）
+        大安 =  - 1
+        而（daan < 0）：
+            daan，ti = timu（nianji，n）
+        jieguo = jieguozhuanhuan（输入（ti + “”））
+        if（jieguo == 分数（'{}'。format（daan））。limit_denominator（））：          ＃判断是否正确
+            打印（“正确”）
+            fenshu = fenshu + 10
+        其他：
+            打印（“错误，答案为：”，结束= ”）
+            打印（分数（'{}'。格式（daan））。limit_denominator（））
+    打印（“答题结束，总分为” + str（fenshu））                                       ＃发送总分
+如果 __name__ == “ __main__”：
+   个人资料。运行（'main（）'）
